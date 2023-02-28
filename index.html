@@ -4,32 +4,48 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Poppins Added from Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
     <title>Movie Info</title>
   </head>
   <body>
-    <h1 class="text-center text-4xl font-bold mt-2">Movie Search App</h1>
+    <h1 class="text-center text-4xl font-bold mt-2 text-white">
+      Movie Search App
+    </h1>
+    <div class="flex justify-center">
+      <a href="favPage.html">
+        <p
+          class="text-center text-lg font-bold mt-2 text-white hover:cursor-pointer"
+          id="favPage"
+        >
+          Favorites
+        </p>
+      </a>
+    </div>
+
     <div class="flex justify-center mt-4">
-      <form class="w-full max-w-sm text-center">
-        <div class="flex items-center border-b border-b-2 border-gray-500 py-2">
-          <input
-            class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-            type="text"
-            placeholder="Search movies"
-            id="movieName"
-          />
-          <button
-            class="flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded"
-            type="button"
-            id="searchMovieBtn"
-          >
-            Search
-          </button>
-        </div>
-      </form>
+      <div class="flex items-center border-b border-b-2 border-gray-500 py-2">
+        <input
+          class="appearance-none bg-transparent w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none"
+          type="text"
+          placeholder="Search movies"
+          id="movieName"
+        />
+        <button
+          class="flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded"
+          type="button"
+          id="searchMovieBtn"
+        >
+          Search
+        </button>
+      </div>
     </div>
-    <div class="m-2 flex justify-center" id="result">
-    </div>
+    <div class="mt-8" id="result"></div>
     <script src="script.js"></script>
   </body>
 </html>

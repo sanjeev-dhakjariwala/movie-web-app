@@ -1,10 +1,24 @@
 //Search Input
 const searchInput = document.getElementById("movieName");
 const searchResult = document.getElementById("result");
+const searchBtn = document.getElementById("searchMovieBtn");
 
+//api key
 const apiKey = "9a1b027b";
 
-searchInput.addEventListener("input", () => {
+//Stores the info of the movie fetched from the API
+let movie = {};
+//Stores the previous favourite movies in an array from local storage
+const prevFavMovie = JSON.parse(localStorage.getItem("movieData"));
+console.log(`<<<<PREV FAV>>>>`);
+console.log(prevFavMovie);
+//Stores the current fav which will be added
+let favMovie = [];
+if (prevFavMovie?.length >= 1) {
+  favMovie.push(...prevFavMovie);
+}
+
+const searchMovie = (event) => {
   const searchWord = searchInput.value;
   let url = `http://www.omdbapi.com/?t=${searchWord}&apikey=${apiKey}`;
   fetch(url)
@@ -12,24 +26,57 @@ searchInput.addEventListener("input", () => {
     .then((data) => {
       // Clear the previous search results
       searchResult.innerHTML = "";
-      const movie = data;
+      movie = data;
       // Render the new search results
       if (!movie.Error) {
+        //display the Movie card according to the result
         const movieCard = `
-        <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
-          <div class="bg-gray-500 rounded-lg shadow-lg">
-            <img class="w-full h-64" src="${movie.Poster}" alt="${movie.Title}">
-            <div class="p-4">
-              <h2 class="text-white font-bold text-xl mb-2">${movie.Title}(${movie.Year})</h2>
-              <p class="text-white">${movie.Plot}</p>
-            </div>
-          </div>
+        <div
+        class="mx-auto w-full h-full lg:w-80 lg:h-112 border rounded-lg overflow-hidden shadow-md bg-gray-500"
+      >
+        <img
+          class="w-full h-40"
+          src="${movie.Poster}"
+          alt="Placeholder image"
+        />
+        <div class="px-4 py-2">
+          <div class="flex flex-row relative" id="addFav">
+            <h2 class="text-lg font-bold">${movie.Title}(${movie.Year})</h2>
+            <img class="mx-4" src="./media/heart.svg" alt="heart" />
+            <div
+            class="absolute inset-0 flex items-center justify-center text-white font-bold text-xl bg-pink-900 opacity-0 hover:opacity-75 transition-opacity duration-300 cursor-pointer"
+            >
+            <p>Add to favorite</p>
         </div>
+      </div>
+          <p> ${movie.Plot} </p>
+      </div>
+      </div>
       `;
         searchWord !== ""
           ? searchResult.insertAdjacentHTML("beforeend", movieCard)
           : "";
+        //getting the favourite div to perform the necessary options
+        const addFav = document.getElementById("addFav");
+        //adding the click function for favourite div
+        const addFavClick = () => {
+          console.log("Fav Button Clicked!!!");
+          favMovie.push(movie);
+          localStorage.setItem("movieData", JSON.stringify(favMovie));
+          alert("Added to Favorites");
+        };
+        addFav.addEventListener("click", addFavClick);
+      } else {
+        searchResult.insertAdjacentHTML(
+          "beforeend",
+          `<p class="text-center text-white text-2xl">No Movies found</p>`
+        );
       }
     })
     .catch((error) => console.log(error));
-});
+};
+
+//adding input event listener to the input element
+searchInput.addEventListener("input", searchMovie);
+//adding click event listener to the search movie button
+searchBtn.addEventListener("click", searchMovie);
