@@ -36,7 +36,7 @@ const searchMovie = () => {
         //display the Movie card according to the result
         const movieCard = `
         <div
-        class="mx-auto w-full h-full lg:w-80 lg:h-112 border rounded-lg overflow-hidden shadow-md bg-gray-500"
+        class="mx-auto w-full h-full lg:w-80 lg:h-112 border rounded-lg overflow-hidden shadow-md bg-white"
       >
         <img
           class="w-full h-40"
@@ -45,7 +45,7 @@ const searchMovie = () => {
         />
         <div class="px-4 py-2">
           <div class="flex flex-row relative mb-2" id="addFav">
-            <h2 class="font-bold text-white text-2xl ">${movie.Title}(${movie.Year})</h2>
+            <h2 class="font-bold text-black text-2xl ">${movie.Title}(${movie.Year})</h2>
             <img class="mx-4" src="./media/heart.svg" alt="heart" />
             <div
             class="absolute inset-0 flex items-center justify-center text-white font-bold text-xl bg-pink-900 opacity-0 hover:opacity-75 transition-opacity duration-300 cursor-pointer"
@@ -53,7 +53,7 @@ const searchMovie = () => {
             <p class="font-bold ">Add to favorite</p>
         </div>
       </div>
-          <p class="text-white"> ${movie.Plot} </p>
+          <p class="text-black"> ${movie.Plot} </p>
       </div>
         <div class="flex justify-center mb-3">
           <a href="movie-details.html">
