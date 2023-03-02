@@ -24,7 +24,7 @@ const searchMovie = () => {
   const searchWord = searchInput.value;
   console.log(`Button CLicked!!!`)
   console.log(searchWord)
-  let url = `http://www.omdbapi.com/?t=${searchWord}&apikey=${apiKey}`;
+  let url = `https://www.omdbapi.com/?t=${searchWord}&apikey=${apiKey}`;
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
