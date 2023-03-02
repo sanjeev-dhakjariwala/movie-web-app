@@ -1,4 +1,4 @@
-var movieData = JSON.parse(localStorage.getItem("movieData"));
+let movieData = JSON.parse(localStorage.getItem("movieData"));
 const result = document.getElementById("result");
 console.log(`<<<<MOVIE DATA`);
 console.log(movieData);

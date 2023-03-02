@@ -3,3 +3,10 @@ body {
   background: linear-gradient(#000000 50%, #ffb92a 50%);
   font-family: "Poppins", sans-serif;
 }
+.cardBg{
+  background-color: #201f28;
+}
+
+.btnBg{
+  background-color: #ffb92a
+}
