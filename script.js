@@ -2,8 +2,6 @@
 const searchInput = document.getElementById("movieName");
 const searchResult = document.getElementById("result");
 const searchBtn = document.getElementById("searchMovieBtn");
-console.log(`<<<<BUTTON`);
-console.log(searchBtn);
 
 //api key
 const apiKey = "9a1b027b";
@@ -12,8 +10,6 @@ const apiKey = "9a1b027b";
 let movie = {};
 //Stores the previous favourite movies in an array from local storage
 const prevFavMovie = JSON.parse(localStorage.getItem("movieData"));
-console.log(`<<<<PREV FAV>>>>`);
-console.log(prevFavMovie);
 //Stores the current fav which will be added
 let favMovie = [];
 if (prevFavMovie?.length >= 1) {
@@ -22,8 +18,6 @@ if (prevFavMovie?.length >= 1) {
 
 const searchMovie = () => {
   const searchWord = searchInput.value;
-  console.log(`Button CLicked!!!`);
-  console.log(searchWord);
   let url = `https://www.omdbapi.com/?t=${searchWord}&apikey=${apiKey}`;
   fetch(url)
     .then((response) => response.json())
@@ -72,7 +66,7 @@ const searchMovie = () => {
         const addFav = document.getElementById("addFav");
         //adding the click function for favourite div
         const addFavClick = () => {
-          console.log("Fav Button Clicked!!!");
+          
           favMovie.push(movie);
           localStorage.setItem("movieData", JSON.stringify(favMovie));
           alert("Added to Favorites");

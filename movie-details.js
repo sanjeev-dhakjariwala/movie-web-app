@@ -1,9 +1,5 @@
 let movieDetails = JSON.parse(localStorage.getItem("movie"));
 const result = document.getElementById("result");
-console.log(`<<<<RESULT`);
-console.log(result);
-console.log(`<<<<MOVIE`);
-console.log(movieDetails);
 
 let res = `
 <div
