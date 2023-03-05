@@ -3,10 +3,30 @@ body {
   background: linear-gradient(#000000 50%, #ffb92a 50%);
   font-family: "Poppins", sans-serif;
 }
-.cardBg{
+.cardBg {
   background-color: #201f28;
 }
 
-.btnBg{
-  background-color: #ffb92a
+.btnBg {
+  background-color: #ffb92a;
+}
+
+.card {
+  @apply mx-auto w-full h-full lg:w-80 lg:h-112 border rounded-lg overflow-hidden shadow-md bg-white;
+}
+
+.card img {
+  @apply w-full h-40;
+}
+
+.titleParentDiv {
+  @apply px-4 py-2;
+}
+
+.titleDiv {
+  @apply flex flex-row relative;
+}
+
+.deleteDiv {
+  @apply absolute inset-0 flex items-center justify-center text-white font-bold text-xl bg-pink-900 opacity-0 hover:opacity-75 transition-opacity duration-300 cursor-pointer;
 }

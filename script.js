@@ -3,7 +3,7 @@ const searchInput = document.getElementById("movieName");
 const searchResult = document.getElementById("result");
 const searchBtn = document.getElementById("searchMovieBtn");
 console.log(`<<<<BUTTON`);
-console.log(searchBtn)
+console.log(searchBtn);
 
 //api key
 const apiKey = "9a1b027b";
@@ -22,8 +22,8 @@ if (prevFavMovie?.length >= 1) {
 
 const searchMovie = () => {
   const searchWord = searchInput.value;
-  console.log(`Button CLicked!!!`)
-  console.log(searchWord)
+  console.log(`Button CLicked!!!`);
+  console.log(searchWord);
   let url = `https://www.omdbapi.com/?t=${searchWord}&apikey=${apiKey}`;
   fetch(url)
     .then((response) => response.json())
@@ -88,8 +88,6 @@ const searchMovie = () => {
     .catch((error) => console.log(error));
 };
 //adding click event listener to the search movie button
-searchBtn.addEventListener('click', searchMovie);
+searchBtn.addEventListener("click", searchMovie);
 //adding input event listener to the input element
 searchInput.addEventListener("input", searchMovie);
-
-
