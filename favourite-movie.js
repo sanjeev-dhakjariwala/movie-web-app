@@ -1,7 +1,5 @@
 let movieData = JSON.parse(localStorage.getItem("movieData"));
 const result = document.getElementById("result");
-console.log(`<<<<MOVIE DATA`);
-console.log(movieData);
 
 // Render the initial movie list
 renderMovies();
@@ -9,11 +7,13 @@ renderMovies();
 function renderMovies() {
   let str = ``;
   movieData.forEach((movie, index) => {
+    //adding all the elements to str along with necessary information
     str =
       str +
       `<div
           class="mx-auto w-full h-full lg:w-80 lg:h-112 border rounded-lg overflow-hidden shadow-md bg-white"
         >
+          <!-- Adding movie Image -->
           <img
             class="w-full h-40"
             src="${movie.Poster}"
@@ -21,6 +21,7 @@ function renderMovies() {
           />
           <div class="px-4 py-2 delete-button" data-index="${index}">
             <div class="flex flex-row relative">
+            <!-- Adding Movie Title and Year-->
               <h2 class="text-lg font-bold text-black">${movie.Title}(${movie.Year})</h2>
               <img class="mx-4" src="./media/trash.svg" alt="heart" />
               <div
@@ -29,6 +30,7 @@ function renderMovies() {
               <p class="">Delete from favorite</p>
           </div>
         </div>
+            <!-- Adding Movie Plot-->
             <p class="text-black"> ${movie.Plot} </p>
         </div>
         
@@ -36,8 +38,10 @@ function renderMovies() {
   });
 
   if (str !== "") {
+    //Setting all the card to the result div
     result.innerHTML = str;
   } else {
+    //When their is no movie in the List
     searchResult.insertAdjacentHTML(
       "beforeend",
       `<p class="text-center text-white text-2xl">No Movies found</p>`
