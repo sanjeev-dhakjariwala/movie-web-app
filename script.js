@@ -66,10 +66,16 @@ const searchMovie = () => {
         const addFav = document.getElementById("addFav");
         //adding the click function for favourite div
         const addFavClick = () => {
-          
-          favMovie.push(movie);
+          const foundElement = favMovie.find((element) => {
+            return element.name === movie.name;
+          });
+          if (foundElement) {
+            alert("Movie already exists!!");
+          } else {
+            favMovie.push(movie);
+            alert("Added to Favorites");
+          }
           localStorage.setItem("movieData", JSON.stringify(favMovie));
-          alert("Added to Favorites");
         };
         addFav.addEventListener("click", addFavClick);
       } else {

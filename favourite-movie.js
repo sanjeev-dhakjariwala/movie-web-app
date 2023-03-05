@@ -8,9 +8,13 @@ function renderMovies() {
   let htmlStr = "";
   let movieData = JSON.parse(localStorage.getItem("movieData"));
 
-  // Loop through the movie data and add the HTML for each movie
-  movieData.forEach((movie, index) => {
-    htmlStr += `
+  if (!movieData) {
+    console.log(`NO MOVIES`);
+    result.innerHTML = `<div class="my-auto ml-4"><p class="text-2xl font-bold mt-2 text-white">No Movies found</p></div>`;
+  } else {
+    // Loop through the movie data and add the HTML for each movie
+    movieData.forEach((movie, index) => {
+      htmlStr += `
     <div
     class="mx-auto w-full h-full lg:w-80 lg:h-112 border rounded-lg overflow-hidden shadow-md bg-white"
     >
@@ -36,34 +40,32 @@ function renderMovies() {
   </div>
   </div>
     `;
-  });
-
-  // Add the HTML to the page
-  result.innerHTML = htmlStr;
-
-  // Add event listeners for the delete buttons
-  document.querySelectorAll(".delete-button").forEach((button) => {
-    button.addEventListener("click", () => {
-      // Get the index of the movie to delete
-      const index = button.dataset.index;
-      alert(`Are you sure you want to delete the movie?`);
-      // Remove the movie from the movieData array
-      movieData.splice(index, 1);
-
-      // Save the updated movie data to local storage
-      localStorage.setItem("movieData", JSON.stringify(movieData));
-
-      // Check if there are any movies left
-      if (movieData.length === 0) {
-        // If there are no movies left, clear the HTML
-        result.innerHTML = "";
-      } else {
-        // Otherwise, re-render the movie list
-        renderMovies();
-      }
     });
-    if (movieData.length === 0) {
-      result.innerHTML = "";
-    }
-  });
+
+    // Add the HTML to the page
+    result.innerHTML = htmlStr;
+
+    // Add event listeners for the delete buttons
+    document.querySelectorAll(".delete-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        // Get the index of the movie to delete
+        const index = button.dataset.index;
+        alert(`Are you sure you want to delete the movie?`);
+        // Remove the movie from the movieData array
+        movieData.splice(index, 1);
+
+        // Save the updated movie data to local storage
+        localStorage.setItem("movieData", JSON.stringify(movieData));
+
+        // Check if there are any movies left
+        if (movieData.length === 0) {
+          // If there are no movies left, clear the HTML
+          result.innerHTML = "";
+        } else {
+          // Otherwise, re-render the movie list
+          renderMovies();
+        }
+      });
+    });
+  }
 }
