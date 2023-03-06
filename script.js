@@ -66,17 +66,10 @@ const searchMovie = () => {
         const addFav = document.getElementById("addFav");
         //adding the click function for favourite div
         const addFavClick = () => {
-          console.log(`<<<MOVIE`);
-          console.log(movie);
-          console.log(`<<<FAV MOVIE!!`);
-          console.log(favMovie);
 
           const isPresent = favMovie.some(
             (obj) => JSON.stringify(obj) === JSON.stringify(movie)
           );
-
-          console.log(`FOUND ELEMENT!!!`);
-          console.log(isPresent);
 
           if (isPresent) {
             alert("Movie already exists!!");
